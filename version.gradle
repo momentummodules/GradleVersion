@@ -1,0 +1,51 @@
+import java.text.SimpleDateFormat
+
+/**
+ * Get the simple amount of git commits
+ */
+def gitVersion() {
+    def process = "git rev-list master --first-parent --count".execute()
+    return process.text.toInteger()
+}
+
+/**
+ * Simply append the 3 version numbers
+ */
+def buildNumber() {
+    return "${versionMajor}.${versionMinor}.${versionPatch}";
+}
+
+/**
+ * Return the build time
+ */
+def buildTime() {
+    def df = new SimpleDateFormat("yyMMddhhmm")
+    return df.format(new Date())
+}
+
+/**
+ * Generate the version name
+ */
+def genVersionName() {
+    return buildNumber() + "." + buildTime();
+}
+
+/**
+ * Generate the version code
+ */
+def genVersionCode() {
+    println "============================================================================== " + buildNumber()
+    return versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100;
+}
+
+ext
+{
+    // default version codes
+    versionMajor = -1
+    versionMinor = -1
+    versionPatch = -1
+
+    // publishing the 2 main functions
+    genVersionName = this.&genVersionName
+    genVersionCode = this.&genVersionCode
+}
