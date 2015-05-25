@@ -27,7 +27,7 @@ def buildTime() {
  * Generate the version name
  */
 def genVersionName() {
-    return buildNumber() + "." + buildTime();
+    return buildNumber();// + "." + buildTime();
 }
 
 /**
