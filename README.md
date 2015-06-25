@@ -2,6 +2,8 @@
 Simple gradle scripts for android build versioning. It generates a
 unified versionCode and versionName.
 
+It supports up to 100 minor versions per major version and 1000 patch versions per minor version.
+
 ## Installation
 Simply add this script to your build.gradle with this command
 

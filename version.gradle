@@ -35,7 +35,7 @@ def genVersionName() {
  */
 def genVersionCode() {
     println "============================================================================== " + buildNumber()
-    return versionMajor * 10000 + versionMinor * 100 + versionPatch * 1;
+    return versionMajor * 100000 + versionMinor * 1000 + versionPatch;
 }
 
 ext
